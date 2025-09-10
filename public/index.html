@@ -5,14 +5,24 @@
     <meta charset="utf-8">
     <script src="js/main.js"></script>
     <link rel="stylesheet" href="css/main.css">
-    
     <!-- get rid of favicon error -->
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
   </head>
   <body>
-    <form>
-      <input type="text" id="yourname" value="your name here">
-      <button>submit</button>
-    </form>
+    <div class="flex-container">
+      <div>
+        <form>
+          <label>your name here:</label><br>
+          <input type="text" id="yourname">
+          <button>submit</button>
+        </form>
+      </div>
+      <div>
+          <canvas height="520px" width="520px"id="drawing_canvas">
+          </canvas>
+          <button onclick="clear_canvas()">clear</button>
+          <button>submit</button>
+      </div>
+    </div>
   </body>
 </html>

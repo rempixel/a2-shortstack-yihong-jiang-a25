@@ -1,4 +1,42 @@
 body {
-  background:black;
-  color:white;
+  background: var(--background-accent-color);
+  color:black;
+}
+.flex-container {
+  margin: 0 auto;
+  display: flex; 
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+  width: 85%;
+  background-color: var(--background-main--color);
+  z-index: -1;
+}
+.flex-container > div {
+  background-color: var(--card-main-color);
+  border-radius: 5px;
+  border: 1px dashed var(--card-accent-color);
+  width: 50%;
+  margin: 10px;
+  text-align: center;
+  line-height: 15px;
+  font-size: 18px;
+  color: var(--card-accent-color);
+  z-index: 2;
+}
+
+#drawing_canvas {
+  background-color: var(--background-main--color);
+  border-radius: 5px;
+  border: 1px var(--text-main-color) dashed;
+  margin: 5px;
+}
+
+:root {
+    --background-main--color: #ffff;
+    --background-accent-color: #9EDDFF;
+    --card-accent-color: #577180;
+    --card-main-color: #FFD8A5;
+    --text-main-color: #707070;
+    --text-highlight-color: #F58600;
 }
