@@ -5,6 +5,8 @@ let drawing = false;
 let x = 0;
 let y = 0;
 const rect = canvas.getBoundingClientRect();
+context.fillStyle = "white";
+context.fillRect(0, 0, canvas.width, canvas.height);
 
 canvas.addEventListener('mousedown', (event) =>{
     drawing = true;
@@ -35,4 +37,6 @@ canvas.addEventListener('mouseup', (event) => {
 
 function clear_canvas() {
    context.clearRect(0, 0, canvas.width, canvas.height);
+   context.fillStyle = "white";
+   context.fillRect(0, 0, canvas.width, canvas.height);
 }

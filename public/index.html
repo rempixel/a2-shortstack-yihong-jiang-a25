@@ -3,7 +3,6 @@
   <head>
     <title>CS4241 Assignment 2</title>
     <meta charset="utf-8">
-    <script src="js/main.js"></script>
     <link rel="stylesheet" href="css/main.css">
     <!-- get rid of favicon error -->
     <link rel="icon" href="data:;base64,iVBORw0KGgo=">
@@ -12,17 +11,23 @@
     <div class="flex-container">
       <div>
         <form>
-          <label>your name here:</label><br>
-          <input type="text" id="yourname">
-          <button>submit</button>
-        </form>
-      </div>
-      <div>
-          <canvas height="520px" width="520px"id="drawing_canvas">
+          <label for="yourname">Enter your name!</label><br>
+          <input type="text" name="name" id="yourname" placeholder="name" value=" " autocomplete="off"><br>
+          <label for="birthday">Enter your birthday!</label><br>
+          <input type="date" name="birthday" id="birthday" value=" " autocomplete="off"><br>
+          <label for="drawing_canvas">Make a cool drawing!</label><br>
+          <canvas height="200px" width="200px"id="drawing_canvas">
           </canvas>
-          <button onclick="clear_canvas()">clear</button>
-          <button>submit</button>
+          <div>
+            <button onclick="clear_canvas()">clear</button>
+            <button type="button" id="submit_btn">submit</button>
+          </div>
+        </form>  
       </div>
     </div>
+    <div class="flex-container" id="submissions">
+    </div>
   </body>
+  <script src="js/main.js"></script>
+  <script src="js/drawing_scripts.js"></script>
 </html>

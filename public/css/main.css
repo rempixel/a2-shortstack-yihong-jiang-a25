@@ -32,6 +32,14 @@ body {
   margin: 5px;
 }
 
+#submissions {
+  flex-direction: row;
+}
+#submissions > div {
+  width: 25%;
+  margin: 0 auto;
+}
+
 :root {
     --background-main--color: #ffff;
     --background-accent-color: #9EDDFF;
