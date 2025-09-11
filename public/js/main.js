@@ -46,8 +46,11 @@ function display_posts(data) {
   data.forEach((entry, index)=> {
     const image = new Image();
     image.src = entry.image;
-    image.style.maxWidth = "100px";
-    image.style.maxHeight = "100px";
+    image.style.maxWidth = "150px";
+    image.style.maxHeight = "150px";
+    image.style.borderRadius = "3%"
+    image.style.borderStyle = "Dashed"
+    image.style.borderWidth = "1px";
 
     const post = document.createElement("div");
     const delete_btn = document.createElement("button");
@@ -55,10 +58,9 @@ function display_posts(data) {
     delete_btn.onclick = () => delete_post(index);
     delete_btn.style.backgroundColor ="#ff6961";
     delete_btn.style.color = "white";
-    delete_btn.style.width = "20px";
-    delete_btn.style.height = "20px";
+    delete_btn.style.width = "15px";
+    delete_btn.style.height = "15px";
     delete_btn.style.float = "right";
-    delete_btn.style.margin = "2px";
     delete_btn.style.borderRadius = "50%";
     delete_btn.style.border = "none";
     delete_btn.style.cursor = "pointer";
@@ -84,6 +86,9 @@ async function get_data() {
   const server_data = await fetch("/results");
   const data = await server_data.json();
   display_posts(data);
+}
+async function edit_post(index) {
+  const body = JSON.stringify()
 }
 async function delete_post(index) {
   const body = JSON.stringify( {index} );
