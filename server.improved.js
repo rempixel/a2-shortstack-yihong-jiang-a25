@@ -69,6 +69,9 @@ const handlePost = function( request, response ) {
         response.writeHead( 200, "OK", {"Content-Type": "application/json"});
         response.end(JSON.stringify({success: true}));
         break; 
+      case "/edit" :
+        edit_data(data_json, server_data, response);
+        break;
     }
   })
 }
@@ -114,6 +117,28 @@ function submit_data(data_json, server_data, response) {
   console.log("Data added to server.");
   response.writeHead( 200, "OK", {"Content-Type": "application/json"});
   return response.end(JSON.stringify(server_data));
+}
+
+function edit_data(data_json, server_data, response) {
+  const index = data_json.index;
+  const user_name = data_json.name.toString().trim();
+  const date = data_json.birthday.toString().trim();
+  const image_data = data_json.image.toString();
+
+  const age = derive_age(date);
+  const zodiac = derive_zodiac(date);
+
+  server_data[index] = {
+    name: user_name,
+    image: image_data,
+    birthday: date,
+    age: age,
+    zodiac: zodiac,
+  };
+
+  console.log("Data updated on server.");
+  response.writeHead(200, "OK", {"Content-Type": "application/json"});
+  response.end(JSON.stringify(server_data));
 }
 
 function derive_age(string) {

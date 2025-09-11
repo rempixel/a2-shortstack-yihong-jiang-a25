@@ -65,6 +65,18 @@ function display_posts(data) {
     delete_btn.style.border = "none";
     delete_btn.style.cursor = "pointer";
 
+    const edit_btn = document.createElement("button");
+    edit_btn.onclick = () => edit_post(index, entry);
+    edit_btn.style.backgroundColor = "#87CEEB";
+    edit_btn.style.marginRight = "2px";
+    edit_btn.style.color = "white";
+    edit_btn.style.width = "15px";
+    edit_btn.style.height = "15px";
+    edit_btn.style.float = "right";
+    edit_btn.style.borderRadius = "50%";
+    edit_btn.style.border = "none";
+    edit_btn.style.cursor = "pointer";
+
     const post_name = document.createElement("p");
     post_name.textContent = `Name: ${entry.name}`;
     
@@ -75,6 +87,7 @@ function display_posts(data) {
     post_zodiac.textContent = `Zodiac: ${entry.zodiac}`;
     
     post.appendChild(delete_btn);
+    post.appendChild(edit_btn);
     post.appendChild(post_name);
     post.appendChild(post_age);
     post.appendChild(post_zodiac);
@@ -87,8 +100,24 @@ async function get_data() {
   const data = await server_data.json();
   display_posts(data);
 }
-async function edit_post(index) {
-  const body = JSON.stringify()
+async function edit_post(index, entry) {
+  const new_name = prompt("Enter new name:", entry.name);
+  if (new_name === null) return;
+
+  const new_bday = prompt ("Enter new birthday:", entry.birthday);
+  if (new_bday === null) return;
+
+  const body = JSON.stringify( {index, name: new_name, birthday: new_bday, image: entry.image} );
+  const response = await fetch('/edit', {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body
+  })
+  if (response.ok) {
+    get_data();
+  }
 }
 async function delete_post(index) {
   const body = JSON.stringify( {index} );
