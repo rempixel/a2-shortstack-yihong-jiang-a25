@@ -133,7 +133,7 @@ async function delete_post(index) {
   }
 }
 window.onload = function() {
-  const button = document.querySelector("#submit_btn");
+  const button = document.querySelector("submit_btn");
   button.onclick = function(event) {
     submit(event);
     get_data()
