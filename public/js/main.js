@@ -1,9 +1,5 @@
 // FRONT-END (CLIENT) JAVASCRIPT HERE
-const button = document.querySelector("#submit_btn");
-button.onclick = function(event) {
-  submit(event);
-  get_data()
-};
+
 const submit = async function( event ) {
   // stop form submission from trying to load
   // a new .html page for displaying results...
@@ -136,8 +132,12 @@ async function delete_post(index) {
     get_data();
   }
 }
-
 window.onload = function() {
+  const button = document.querySelector("#submit_btn");
+  button.onclick = function(event) {
+    submit(event);
+    get_data()
+  };
   // Load existing data when page loads
   get_data();
 }
